@@ -1,0 +1,26 @@
+# Template file for 'gek'
+pkgname=gek
+version=0.1
+revision=1
+hostmakedepends="git go"
+short_desc="Stack-based stream editor and scripting language"
+maintainer="John Gebbie <me@johngebbie.com>"
+license="GPL-3.0-only"
+homepage="https://geklang.org/"
+
+do_fetch() {
+	git clone https://git.sr.ht/~geb/gek "${wrksrc}"
+	cd "${wrksrc}"
+}
+
+do_build() {
+	go build -o gek ./src
+}
+
+do_install() {
+	vbin gek
+	vbin gekdoc
+	vman gek.1
+	mkdir "${DESTDIR}/usr/share/doc"
+	cp -r doc "${DESTDIR}/usr/share/doc/${pkgname}"
+}
