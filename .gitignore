@@ -17,6 +17,7 @@
 !/etc
 !/srcpkgs
 !/xbps-src
+!/build-vosk.sh
 etc/conf
 etc/conf.*
 etc/virtual
